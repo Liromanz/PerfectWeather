@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -76,37 +76,27 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <LinearLayout
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/DetailText"
+            android:layout_margin="16dp"
+            android:textAlignment="center"
+            android:text="Совет: пососи"/>
+
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+            <TableRow>
                 <TextView
                     android:id="@+id/tempFeelsLikeText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
+                    android:layout_weight="1"
                     style="@style/DetailText"
                     android:text="-100°"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    style="@style/DetailText"
-                    android:text="Ощущается как"/>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
                 <TextView
                     android:id="@+id/windText"
                     android:layout_width="match_parent"
@@ -115,23 +105,147 @@
                     android:textAlignment="textEnd"
                     style="@style/DetailText"
                     android:text="7.5"/>
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="Ощущается как"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"
                     style="@style/DetailText"
                     android:text="Ветер м\с"/>
-            </LinearLayout>
+            </TableRow>
+        </TableLayout>
 
-        </LinearLayout>
+        <View
+            android:id="@+id/topLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+                    android:id="@+id/sunriseTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="10:00"/>
+                <TextView
+                    android:id="@+id/visibleMeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="10000 м"/>
+                <TextView
+                    android:id="@+id/humidityPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/DetailText"
+                    android:text="92%"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/sunriseText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="Рассвет"/>
+                <TextView
+                    android:id="@+id/visibleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="Видимость"/>
+                <TextView
+                    android:id="@+id/humidityText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/DetailText"
+                    android:text="Влажность"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:layout_height="5dp"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/sunsetTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="15:00"/>
+                <TextView
+                    android:id="@+id/pressureMeter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="761 мм рт с"/>
+                <TextView
+                    android:id="@+id/cloudyPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/DetailText"
+                    android:text="66%"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/sunsetText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="Закат"/>
+                <TextView
+                    android:id="@+id/pressureText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="Давление"/>
+                <TextView
+                    android:id="@+id/cloudyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/DetailText"
+                    android:text="Облачность"/>
+            </TableRow>
+        </TableLayout>
 
         <View
             android:id="@+id/bottomLine"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_editor_absoluteX="10dp" />
+            app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="@style/DetailText"
+            android:text="Почасовое"/>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TableRow>
+                <TextView
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

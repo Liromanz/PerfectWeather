@@ -10,6 +10,5 @@
     <style name="DetailText">
         <item name="android:textColor">#fff</item>
         <item name="fontFamily">@font/gothic</item>
-        <item name="android:layout_weight">1</item>
     </style>
 </resources>
