@@ -9,10 +9,12 @@
         android:id="@+id/weatherGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/thunder"
+        android:src="@drawable/clouds_part"
         android:scaleType="centerCrop"/>
 
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -21,6 +23,55 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TableLayout
+            android:id="@+id/weekSelector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow>
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/monday" />
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/tuesday" />
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/wednesday" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/thursday" />
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/friday" />
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/saturday" />
+            </TableRow>
+
+            <TableRow>
+
+                <Button
+                    style="@style/DetailButton"
+                    android:text="@string/sunday" />
+            </TableRow>
+        </TableLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -38,7 +89,7 @@
                     android:id="@+id/iconWeatherType"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    app:layout_constraintStart_toEndOf="@+id/tempMorTime"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
@@ -51,38 +102,38 @@
 
                     <TextView
                         android:id="@+id/tempNowText"
+                        style="@style/DetailText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/DetailText"
                         android:gravity="bottom"
                         android:text="-4°"
                         android:textSize="30sp" />
 
                     <TextView
                         android:id="@+id/weatherTypeText"
+                        style="@style/DetailText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/DetailText"
-                        android:text="Облачно"/>
+                        android:text="@string/weatherClouds" />
 
                     <TextView
                         android:id="@+id/tempMinMaxText"
+                        style="@style/DetailText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/DetailText"
-                        android:text="-3°/-5°"/>
+                        android:text="-3°/-5°" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            style="@style/DetailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/DetailText"
             android:layout_margin="16dp"
-            android:textAlignment="center"
-            android:text="Совет: пососи"/>
+            android:text="Совет:"
+            android:textAlignment="center" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -91,35 +142,29 @@
             <TableRow>
                 <TextView
                     android:id="@+id/tempFeelsLikeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="-100°"/>
+                    android:layout_weight="1"
+                    android:text="-100°"
+                    android:textSize="20sp" />
+
                 <TextView
                     android:id="@+id/windText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:textAlignment="textEnd"
                     style="@style/DetailText"
-                    android:text="7.5"/>
+                    android:text="7.5"
+                    android:textAlignment="textEnd"
+                    android:textSize="20sp" />
             </TableRow>
 
             <TableRow>
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/DetailText"
                     android:layout_weight="1"
-                    style="@style/DetailText"
-                    android:text="Ощущается как"/>
+                    android:text="@string/feelsLike" />
+
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textEnd"
                     style="@style/DetailText"
-                    android:text="Ветер м\с"/>
+                    android:text="@string/wind"
+                    android:textAlignment="textEnd" />
             </TableRow>
         </TableLayout>
 
@@ -133,97 +178,87 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TableRow>
+
                 <TextView
                     android:id="@+id/sunriseTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="10:00"/>
+                    android:layout_weight="1"
+                    android:text="10:00" />
+
                 <TextView
                     android:id="@+id/visibleMeter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="10000 м"/>
+                    android:layout_weight="1"
+                    android:text="10000 м" />
+
                 <TextView
                     android:id="@+id/humidityPercent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     style="@style/DetailText"
-                    android:text="92%"/>
+                    android:text="92%" />
             </TableRow>
+
             <TableRow>
                 <TextView
                     android:id="@+id/sunriseText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="Рассвет"/>
+                    android:layout_weight="1"
+                    android:text="@string/sunrise" />
+
                 <TextView
                     android:id="@+id/visibleText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="Видимость"/>
+                    android:layout_weight="1"
+                    android:text="@string/visibility" />
+
                 <TextView
                     android:id="@+id/humidityText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     style="@style/DetailText"
-                    android:text="Влажность"/>
+                    android:text="@string/humidity" />
             </TableRow>
+
             <TableRow>
-                <TextView
-                    android:layout_height="5dp"/>
+                <TextView android:layout_height="5dp" />
             </TableRow>
+
             <TableRow>
                 <TextView
                     android:id="@+id/sunsetTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="15:00"/>
+                    android:layout_weight="1"
+                    android:text="15:00" />
+
                 <TextView
                     android:id="@+id/pressureMeter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="761 мм рт с"/>
+                    android:layout_weight="1"
+                    android:text="761 мм рт с" />
+
                 <TextView
                     android:id="@+id/cloudyPercent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     style="@style/DetailText"
-                    android:text="66%"/>
+                    android:text="66%" />
             </TableRow>
+
             <TableRow>
+
                 <TextView
                     android:id="@+id/sunsetText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="Закат"/>
+                    android:layout_weight="1"
+                    android:text="@string/sunset" />
+
                 <TextView
                     android:id="@+id/pressureText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
-                    android:text="Давление"/>
+                    android:layout_weight="1"
+                    android:text="@string/pressure" />
+
                 <TextView
                     android:id="@+id/cloudyText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
                     style="@style/DetailText"
-                    android:text="Облачность"/>
+                    android:text="@string/clouds" />
             </TableRow>
         </TableLayout>
 
@@ -233,19 +268,678 @@
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent" />
-        <TextView
+
+        <LinearLayout
+            android:id="@+id/hourlyInterface"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="@style/DetailText"
-            android:text="Почасовое"/>
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TableRow>
-                <TextView
-            </TableRow>
-        </TableLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/DetailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hourly" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour1"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon1"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal1"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels1"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour2"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon2"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal2"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels2"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour3"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon3"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal3"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels3"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour4"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon4"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal4"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels4"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour5"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon5"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal5"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels5"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour6"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon6"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal6"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels6"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour7"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon7"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal7"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels7"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour8"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon8"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal8"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels8"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour9"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon9"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal9"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels9"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour10"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon10"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal10"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels10"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour11"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon11"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal11"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels11"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour12"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon12"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal12"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels12"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour13"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon13"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal13"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels13"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour14"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon14"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal14"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels14"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour15"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon15"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal15"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels15"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour16"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon16"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal16"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels16"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour17"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon17"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal17"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels17"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour18"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon18"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal18"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels18"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour19"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon19"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal19"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels19"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour20"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon20"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal20"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels20"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour21"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon21"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal21"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels21"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour22"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon22"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal22"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels22"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour23"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon23"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal23"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels23"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/hour24"
+                            style="@style/DetailText"
+                            android:layout_weight="1"
+                            android:text="10:00" />
+
+                        <ImageView
+                            android:id="@+id/icon24"
+                            android:layout_width="20dp" />
+
+                        <TextView
+                            android:id="@+id/tempNormal24"
+                            style="@style/DetailText"
+                            android:layout_marginEnd="15dp"
+                            android:layout_weight="1"
+                            android:text="-2°"
+                            android:textAlignment="textEnd" />
+
+                        <TextView
+                            android:id="@+id/tempFeels24"
+                            android:fontFamily="@font/gothic"
+                            android:text="-10°"
+                            android:textColor="@color/colorLightGray" />
+                    </TableRow>
+                </TableLayout>
+            </ScrollView>
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

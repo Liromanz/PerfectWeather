@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded">
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,13 +13,13 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/dayText"
+            android:id="@+id/typeWeatherText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gothic"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
-            android:text="Сегодня"
+            android:text="@string/today"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
@@ -27,9 +27,10 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"
-            app:layout_constraintTop_toBottomOf="@+id/dayText"/>
+            app:layout_constraintTop_toBottomOf="@+id/typeWeatherText"/>
 
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toTopOf="@+id/bottomLine"
@@ -46,7 +47,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gothic"
-                    android:text="Утро"
+                    android:text="@string/morning"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gothic"
-                    android:text="День"
+                    android:text="@string/day"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gothic"
-                    android:text="Вечер"
+                    android:text="@string/evening"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -175,7 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gothic"
-                    android:text="Ночь"
+                    android:text="@string/night"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">PerfectWeather</string>
+
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
+
+    <string name="mon">ПН</string>
+    <string name="tue">ВТ</string>
+    <string name="wed">СР</string>
+    <string name="thu">ЧТ</string>
+    <string name="fri">ПТ</string>
+    <string name="sat">СБ</string>
+    <string name="sun">ВС</string>
+
+    <string name="feelsLike">Ощущается как</string>
+    <string name="wind">Ветер мс</string>
+    <string name="sunrise">Рассвет</string>
+    <string name="visibility">Видимость</string>
+    <string name="humidity">Влажность</string>
+    <string name="sunset">Закат</string>
+    <string name="pressure">Давление</string>
+    <string name="clouds">Облачность</string>
+    <string name="hourly">Почасовое</string>
+
+    <string name="weatherClear">Ясно</string>
+    <string name="weatherClouds">Переменная облачность</string>
+    <string name="weatherBigClouds">Облачно</string>
+    <string name="weatherRain">Дождь</string>
+    <string name="weatherThunder">Гроза</string>
+    <string name="weatherSnow">Снег</string>
+    <string name="weatherMist">Туман</string>
+
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="week">Неделя</string>
+
+    <string name="morning">Утро</string>
+    <string name="day">День</string>
+    <string name="evening">Вечер</string>
+    <string name="night">Ночь</string>
+
 </resources>
