@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@mipmap/backSky">
+    android:background="@drawable/background_sky">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,23 +19,18 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/gothic"
             android:textAlignment="center"
-            android:text="Ваш город:"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Ваш город:" />
 
-        <EditText
-            android:id="@+id/editText"
+        <TextView
+            android:id="@+id/cityText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gothic"
-            android:textColor="@color/colorAccent"
             android:textAlignment="center"
+            android:text="Москва"
+            android:textSize="30sp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            android:layout_marginBottom="16dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/_imageRecyclerView"

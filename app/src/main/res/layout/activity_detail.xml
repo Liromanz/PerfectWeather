@@ -36,7 +36,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TableRow>
-
                 <Button
                     style="@style/DetailButton"
                     android:text="@string/monday" />

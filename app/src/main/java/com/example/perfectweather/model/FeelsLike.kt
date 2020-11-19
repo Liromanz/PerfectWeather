@@ -1,13 +1,11 @@
-package com.example.perfectweather.data
+package com.example.perfectweather.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Temp(
+data class FeelsLike(
     val day: Double,
     val eve: Double,
-    val max: Double,
-    val min: Double,
     val morn: Double,
     val night: Double
 )

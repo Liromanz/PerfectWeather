@@ -1,9 +1,9 @@
-package com.example.perfectweather.data
+package com.example.perfectweather.model
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Minutely(
     val dt: Int,
-    val precipitation: Double
+    val precipitation: Int
 )

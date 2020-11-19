@@ -1,9 +1,9 @@
-package com.example.perfectweather.data
+package com.example.perfectweather.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class WeatherX(
+data class Weather(
     val description: String,
     val icon: String,
     val id: Int,

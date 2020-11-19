@@ -1,20 +1,23 @@
-package com.example.perfectweather.data
+package com.example.perfectweather.model
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Hourly(
+data class Daily(
     val clouds: Int,
     @SerializedName("dew_point")
     val dewPoint: Double,
     val dt: Int,
     @SerializedName("feels_like")
-    val feelsLike: Double,
+    val feelsLike: FeelsLike,
     val humidity: Int,
-    val pop: Int,
+    val pop: Double,
     val pressure: Int,
-    val temp: Double,
-    val visibility: Int,
+    val rain: Double,
+    val sunrise: Int,
+    val sunset: Int,
+    val temp: Temp,
+    val uvi: Double,
     val weather: List<WeatherX>,
     @SerializedName("wind_deg")
     val windDeg: Int,

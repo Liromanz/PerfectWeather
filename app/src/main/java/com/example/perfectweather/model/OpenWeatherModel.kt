@@ -1,10 +1,10 @@
-package com.example.perfectweather.data
+package com.example.perfectweather.model
 
 
 import com.google.gson.annotations.SerializedName
 
 data class OpenWeatherModel(
-    val alerts: List<Alert>,
+    val current: Current,
     val daily: List<Daily>,
     val hourly: List<Hourly>,
     val lat: Double,
