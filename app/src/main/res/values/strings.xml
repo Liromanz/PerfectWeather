@@ -18,12 +18,12 @@
     <string name="sun">ВС</string>
 
     <string name="feelsLike">Ощущается как</string>
-    <string name="wind">Ветер мс</string>
+    <string name="wind">Ветер м/с</string>
     <string name="sunrise">Рассвет</string>
-    <string name="visibility">Видимость</string>
+    <string name="visibility">Видимость м</string>
     <string name="humidity">Влажность</string>
     <string name="sunset">Закат</string>
-    <string name="pressure">Давление</string>
+    <string name="pressure">Давление мм рт с</string>
     <string name="clouds">Облачность</string>
     <string name="hourly">Почасовое</string>
 

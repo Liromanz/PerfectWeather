@@ -12,7 +12,6 @@
         android:src="@drawable/clouds_part"
         android:scaleType="centerCrop"/>
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -37,14 +36,17 @@
 
             <TableRow>
                 <Button
+                    android:id="@+id/firstDayButton"
                     style="@style/DetailButton"
                     android:text="@string/monday" />
 
                 <Button
+                    android:id="@+id/secondDayButton"
                     style="@style/DetailButton"
                     android:text="@string/tuesday" />
 
                 <Button
+                    android:id="@+id/thirdDayButton"
                     style="@style/DetailButton"
                     android:text="@string/wednesday" />
             </TableRow>
@@ -52,23 +54,14 @@
             <TableRow>
 
                 <Button
+                    android:id="@+id/fourthDayButton"
                     style="@style/DetailButton"
                     android:text="@string/thursday" />
 
                 <Button
+                    android:id="@+id/fifthDayButton"
                     style="@style/DetailButton"
                     android:text="@string/friday" />
-
-                <Button
-                    style="@style/DetailButton"
-                    android:text="@string/saturday" />
-            </TableRow>
-
-            <TableRow>
-
-                <Button
-                    style="@style/DetailButton"
-                    android:text="@string/sunday" />
             </TableRow>
         </TableLayout>
 
@@ -127,6 +120,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
+            android:id="@+id/hintText"
             style="@style/DetailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -187,42 +181,6 @@
                     android:text="10:00" />
 
                 <TextView
-                    android:id="@+id/visibleMeter"
-                    style="@style/DetailText"
-                    android:layout_weight="1"
-                    android:text="10000 м" />
-
-                <TextView
-                    android:id="@+id/humidityPercent"
-                    style="@style/DetailText"
-                    android:text="92%" />
-            </TableRow>
-
-            <TableRow>
-                <TextView
-                    android:id="@+id/sunriseText"
-                    style="@style/DetailText"
-                    android:layout_weight="1"
-                    android:text="@string/sunrise" />
-
-                <TextView
-                    android:id="@+id/visibleText"
-                    style="@style/DetailText"
-                    android:layout_weight="1"
-                    android:text="@string/visibility" />
-
-                <TextView
-                    android:id="@+id/humidityText"
-                    style="@style/DetailText"
-                    android:text="@string/humidity" />
-            </TableRow>
-
-            <TableRow>
-                <TextView android:layout_height="5dp" />
-            </TableRow>
-
-            <TableRow>
-                <TextView
                     android:id="@+id/sunsetTime"
                     style="@style/DetailText"
                     android:layout_weight="1"
@@ -231,8 +189,43 @@
                 <TextView
                     android:id="@+id/pressureMeter"
                     style="@style/DetailText"
+                    android:text="761" />
+            </TableRow>
+
+            <TableRow>
+                <TextView
+                    style="@style/DetailText"
                     android:layout_weight="1"
-                    android:text="761 мм рт с" />
+                    android:text="@string/sunrise" />
+
+                <TextView
+                    style="@style/DetailText"
+                    android:layout_weight="1"
+                    android:text="@string/sunset" />
+
+                <TextView
+                    style="@style/DetailText"
+                    android:text="@string/pressure" />
+
+            </TableRow>
+
+            <TableRow>
+                <TextView android:layout_height="5dp" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableToHide">
+                <TextView
+                    android:id="@+id/visibleMeter"
+                    style="@style/DetailText"
+                    android:layout_weight="1"
+                    android:text="10000" />
+
+                <TextView
+                    android:id="@+id/humidityPercent"
+                    android:layout_weight="1"
+                    style="@style/DetailText"
+                    android:text="92%" />
 
                 <TextView
                     android:id="@+id/cloudyPercent"
@@ -240,22 +233,18 @@
                     android:text="66%" />
             </TableRow>
 
-            <TableRow>
-
+            <TableRow
+                android:id="@+id/tableToHide2">
                 <TextView
-                    android:id="@+id/sunsetText"
                     style="@style/DetailText"
                     android:layout_weight="1"
-                    android:text="@string/sunset" />
-
+                    android:text="@string/visibility" />
                 <TextView
-                    android:id="@+id/pressureText"
-                    style="@style/DetailText"
                     android:layout_weight="1"
-                    android:text="@string/pressure" />
+                    style="@style/DetailText"
+                    android:text="@string/humidity" />
 
                 <TextView
-                    android:id="@+id/cloudyText"
                     style="@style/DetailText"
                     android:text="@string/clouds" />
             </TableRow>
