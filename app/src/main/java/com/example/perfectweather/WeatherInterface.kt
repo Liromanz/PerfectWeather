@@ -13,6 +13,7 @@ interface WeatherInterface {
     fun getOneCallWeather(
         @Query("lat") latitude : Double,
         @Query("lon") longtude : Double,
+        @Query("lang") language: String = "en",
         @Query("exclude") exclude : String = "minutely",
         @Query("units") tempType : String = "metric",
         @Query("appid") key : String = BuildConfig.API_KEY

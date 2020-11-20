@@ -52,22 +52,22 @@ class DetailActivity : AppCompatActivity() {
 
         val hoursTexts = listOf(hour2, hour3, hour4, hour5, hour6, hour7, hour8, hour9, hour10, hour11, hour12, hour13, hour14, hour15, hour16, hour17, hour18, hour19, hour20, hour21, hour22, hour23, hour24)
 
-        val tempTexts = listOf(tempNormal2, tempNormal3, tempNormal4, tempNormal5, tempNormal6, tempNormal7, tempNormal8, tempNormal9, tempNormal10, tempNormal11, tempNormal12, tempNormal13, tempNormal14, tempNormal15, tempNormal16, tempNormal17, tempNormal18, tempNormal19, tempNormal20, tempNormal21, tempNormal23, tempNormal23, tempNormal24)
+        val tempTexts = listOf(tempNormal2, tempNormal3, tempNormal4, tempNormal5, tempNormal6, tempNormal7, tempNormal8, tempNormal9, tempNormal10, tempNormal11, tempNormal12, tempNormal13, tempNormal14, tempNormal15, tempNormal16, tempNormal17, tempNormal18, tempNormal19, tempNormal20, tempNormal21, tempNormal22, tempNormal23, tempNormal24)
         val feelTexts = listOf(tempFeels2, tempFeels3, tempFeels4, tempFeels5, tempFeels6, tempFeels7, tempFeels8, tempFeels9, tempFeels10, tempFeels11, tempFeels12, tempFeels13, tempFeels14, tempFeels15, tempFeels16, tempFeels17, tempFeels18, tempFeels19, tempFeels20, tempFeels21, tempFeels22, tempFeels23, tempFeels24)
         val iconTexts = listOf(icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15, icon16, icon17, icon18, icon19, icon20, icon21, icon22, icon23, icon24)
 
-        var i = 1
+        var i = 0
         var hour = sdfHour.format(item.hour.toLong()*1000).toInt()
         hour1.text = "${hour}:00"
         tempNormal1.text = item.hourTempList[0] + '°'
         tempFeels1.text = item.hourFeelList[0] + '°'
         Picasso.get().load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png").fit().into(icon1)
         while (i<23){
-            if (hour == 25) hour = 0 else hour += 1
+            if (hour == 24) hour = 1 else hour += 1
             hoursTexts[i].text = "${hour}:00"
-            tempTexts[i].text = item.hourTempList[0] + '°'
-            feelTexts[i].text = item.hourFeelList[0] + '°'
-            Picasso.get().load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png").fit().into(iconTexts[i])
+            tempTexts[i].text = item.hourTempList[i] + '°'
+            feelTexts[i].text = item.hourFeelList[i] + '°'
+            Picasso.get().load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png").resize(25,25).centerCrop().into(iconTexts[i])
             i++
         }
     }

@@ -1,9 +1,12 @@
 package com.example.perfectweather
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.StrictMode
 import androidx.core.os.BuildCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.perfectweather.model.OpenWeatherModel
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
@@ -11,6 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,13 +28,17 @@ class MainActivity : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
         val retrofit = builder.build()
         val weatherInterface: WeatherInterface = retrofit.create<WeatherInterface>(WeatherInterface::class.java)
-        val call : Call<OpenWeatherModel> = weatherInterface.getOneCallWeather(55.7605,37.6296)
+        val call : Call<OpenWeatherModel> = weatherInterface.getOneCallWeather(55.7605,37.6296, "ru")
 
         val response = call.execute()
         if (response.isSuccessful) {
             val body = response.body()!!
+            val sdfWeek = SimpleDateFormat("EE")
             val imageList = listOf<ItemOfList>(
-                ItemOfList("Сегодня", "Утро", body.daily[0].temp.morn.toString(), body.current.weather[0].icon, "День", body.daily[0].temp.day.toString(), body.current.weather[1].icon, "Вечер", body.daily[0].temp.eve.toString(), body.current.weather[2].icon, "Ночь", body.daily[0].temp.night.toString(), body.current.weather[3].icon,
+                ItemOfList(
+                    "Сегодня", arrayOf("Утро", "День", "Вечер", "Ночь"),
+                    arrayOf(body.daily[0].temp.morn.toString(), body.daily[0].temp.day.toString(),body.daily[0].temp.eve.toString(), body.daily[0].temp.night.toString()),
+                    arrayOf(body.daily[0].weather[0].icon, body.current.weather[0].icon, body.current.weather[0].icon, body.daily[0].weather[0].icon),
                     body.current.temp.toString(), body.daily[0].weather[0].icon, body.daily[0].weather[0].main, body.daily[0].temp.min.toString(), body.daily[0].temp.max.toString(), body.daily[0].feelsLike.day.toString(), body.current.windSpeed.toString(), body.current.sunrise.toString(), body.current.sunset.toString(), body.current.visibility.toString(),
                     body.current.pressure.toString(), body.current.humidity.toString(), body.current.clouds.toString(), body.hourly[0].dt.toString(),
                     listOf(body.hourly[0].weather[0].icon,body.hourly[1].weather[0].icon,body.hourly[2].weather[0].icon,body.hourly[3].weather[0].icon,
@@ -51,7 +59,9 @@ class MainActivity : AppCompatActivity() {
                         body.hourly[12].feelsLike.toString(),body.hourly[13].feelsLike.toString(),body.hourly[14].feelsLike.toString(),body.hourly[15].feelsLike.toString(),
                         body.hourly[16].feelsLike.toString(),body.hourly[17].feelsLike.toString(),body.hourly[18].feelsLike.toString(),body.hourly[19].feelsLike.toString(),
                         body.hourly[20].feelsLike.toString(),body.hourly[21].feelsLike.toString(),body.hourly[22].feelsLike.toString(),body.hourly[23].feelsLike.toString())),
-                ItemOfList("Завтра", "Утро", body.daily[1].temp.morn.toString(), body.daily[1].weather[0].icon, "День", body.daily[1].temp.day.toString(), body.daily[1].weather[0].icon, "Вечер", body.daily[1].temp.eve.toString(), body.daily[1].weather[0].icon, "Ночь", body.daily[1].temp.night.toString(), body.daily[1].weather[0].icon,
+                ItemOfList("Завтра", arrayOf("Утро", "День", "Вечер", "Ночь"),
+                    arrayOf(body.daily[1].temp.morn.toString(), body.daily[1].temp.day.toString(), body.daily[1].temp.eve.toString(), body.daily[1].temp.night.toString()),
+                    arrayOf(body.daily[1].weather[0].icon, body.daily[1].weather[0].icon, body.daily[1].weather[0].icon, body.daily[1].weather[0].icon),
                     body.daily[1].temp.day.toString(), body.daily[1].weather[0].icon, body.daily[1].weather[0].main, body.daily[1].temp.min.toString(), body.daily[1].temp.max.toString(), body.daily[1].feelsLike.day.toString(), body.daily[1].windSpeed.toString(), body.daily[1].sunrise.toString(), body.daily[1].sunset.toString(), "-",
                     body.daily[1].pressure.toString(), body.daily[1].humidity.toString(), body.daily[1].clouds.toString(), body.hourly[24].dt.toString(),
                     listOf(body.hourly[24].weather[0].icon,body.hourly[25].weather[0].icon,body.hourly[26].weather[0].icon,body.hourly[27].weather[0].icon,
@@ -72,7 +82,9 @@ class MainActivity : AppCompatActivity() {
                         body.hourly[36].feelsLike.toString(),body.hourly[37].feelsLike.toString(),body.hourly[38].feelsLike.toString(),body.hourly[39].feelsLike.toString(),
                         body.hourly[40].feelsLike.toString(),body.hourly[41].feelsLike.toString(),body.hourly[42].feelsLike.toString(),body.hourly[43].feelsLike.toString(),
                         body.hourly[44].feelsLike.toString(),body.hourly[45].feelsLike.toString(),body.hourly[46].feelsLike.toString(),body.hourly[47].feelsLike.toString())),
-                ItemOfList("Неделя", body.daily[2].dt.toString(), body.daily[2].temp.day.toString(), body.daily[2].weather[0].icon, body.daily[3].dt.toString(), body.daily[3].temp.day.toString(), body.daily[3].weather[0].icon, body.daily[4].dt.toString(), body.daily[4].temp.day.toString(), body.daily[4].weather[0].icon, body.daily[5].dt.toString(), body.daily[5].temp.day.toString(), body.daily[5].weather[0].icon,
+                ItemOfList("Неделя", arrayOf(sdfWeek.format(body.daily[2].dt.toLong() * 1000).toString().toUpperCase(), sdfWeek.format(body.daily[3].dt.toLong() * 1000).toString().toUpperCase(), sdfWeek.format(body.daily[4].dt.toLong() * 1000).toString().toUpperCase(), sdfWeek.format(body.daily[5].dt.toLong()*1000).toString().toUpperCase()),
+                    arrayOf(body.daily[2].temp.day.toString(), body.daily[3].temp.day.toString(), body.daily[4].temp.day.toString(), body.daily[5].temp.day.toString()),
+                    arrayOf(body.daily[2].weather[0].icon, body.daily[3].weather[0].icon, body.daily[4].weather[0].icon, body.daily[5].weather[0].icon),
                     body.daily[2].temp.day.toString(), body.daily[2].weather[0].icon, body.daily[2].weather[0].main, body.daily[2].temp.min.toString(), body.daily[2].temp.max.toString(), body.daily[2].feelsLike.day.toString(), body.daily[2].windSpeed.toString(), body.daily[2].sunrise.toString(), body.daily[2].sunset.toString(), "-",
                     body.daily[2].pressure.toString(), "", "", "",
                     listOf(""), listOf(""), listOf(""),
@@ -82,6 +94,14 @@ class MainActivity : AppCompatActivity() {
                     arrayOf(body.daily[5].dt.toString(), body.daily[5].temp.day.toString(), body.daily[5].weather[0].icon, body.daily[5].weather[0].main, body.daily[5].temp.min.toString(), body.daily[5].temp.max.toString(), body.daily[5].feelsLike.day.toString(), body.daily[5].windSpeed.toString(), body.daily[5].sunrise.toString(), body.daily[5].sunset.toString(),body.daily[5].pressure.toString()),
                     arrayOf(body.daily[6].dt.toString(), body.daily[6].temp.day.toString(), body.daily[6].weather[0].icon, body.daily[6].weather[0].main, body.daily[6].temp.min.toString(), body.daily[6].temp.max.toString(), body.daily[6].feelsLike.day.toString(), body.daily[6].windSpeed.toString(), body.daily[6].sunrise.toString(), body.daily[6].sunset.toString(),body.daily[6].pressure.toString()))
             )
+            val recyclerView = findViewById<RecyclerView>(R.id._imageRecyclerView)
+            recyclerView.layoutManager = LinearLayoutManager(this)
+            recyclerView.setHasFixedSize(true)
+            recyclerView.adapter = ItemAdapter(this, imageList) {
+                val intent = Intent(this, DetailActivity::class.java)
+                intent.putExtra("OBJECT_INTENT", it)
+                startActivity(intent)
+            }
         }
     }
 }

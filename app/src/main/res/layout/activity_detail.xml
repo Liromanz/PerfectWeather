@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
+
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/weatherGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/clouds_part"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/thunder" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -35,6 +36,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TableRow>
+
                 <Button
                     android:id="@+id/firstDayButton"
                     style="@style/DetailButton"
@@ -133,6 +135,7 @@
             android:layout_height="wrap_content">
 
             <TableRow>
+
                 <TextView
                     android:id="@+id/tempFeelsLikeText"
                     style="@style/DetailText"
@@ -149,6 +152,7 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     style="@style/DetailText"
                     android:layout_weight="1"
@@ -193,6 +197,7 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView
                     style="@style/DetailText"
                     android:layout_weight="1"
@@ -210,11 +215,12 @@
             </TableRow>
 
             <TableRow>
+
                 <TextView android:layout_height="5dp" />
             </TableRow>
 
-            <TableRow
-                android:id="@+id/tableToHide">
+            <TableRow android:id="@+id/tableToHide">
+
                 <TextView
                     android:id="@+id/visibleMeter"
                     style="@style/DetailText"
@@ -223,8 +229,8 @@
 
                 <TextView
                     android:id="@+id/humidityPercent"
-                    android:layout_weight="1"
                     style="@style/DetailText"
+                    android:layout_weight="1"
                     android:text="92%" />
 
                 <TextView
@@ -233,15 +239,16 @@
                     android:text="66%" />
             </TableRow>
 
-            <TableRow
-                android:id="@+id/tableToHide2">
+            <TableRow android:id="@+id/tableToHide2">
+
                 <TextView
                     style="@style/DetailText"
                     android:layout_weight="1"
                     android:text="@string/visibility" />
+
                 <TextView
-                    android:layout_weight="1"
                     style="@style/DetailText"
+                    android:layout_weight="1"
                     android:text="@string/humidity" />
 
                 <TextView
@@ -287,7 +294,8 @@
 
                         <ImageView
                             android:id="@+id/icon1"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal1"
@@ -299,9 +307,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels1"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -314,7 +321,8 @@
 
                         <ImageView
                             android:id="@+id/icon2"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal2"
@@ -326,9 +334,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels2"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -341,7 +348,8 @@
 
                         <ImageView
                             android:id="@+id/icon3"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal3"
@@ -353,9 +361,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels3"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -368,7 +375,8 @@
 
                         <ImageView
                             android:id="@+id/icon4"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal4"
@@ -380,9 +388,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels4"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -395,7 +402,8 @@
 
                         <ImageView
                             android:id="@+id/icon5"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal5"
@@ -407,9 +415,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels5"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -422,7 +429,8 @@
 
                         <ImageView
                             android:id="@+id/icon6"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal6"
@@ -434,9 +442,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels6"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -449,7 +456,8 @@
 
                         <ImageView
                             android:id="@+id/icon7"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal7"
@@ -461,9 +469,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels7"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -476,7 +483,8 @@
 
                         <ImageView
                             android:id="@+id/icon8"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal8"
@@ -488,9 +496,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels8"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -503,7 +510,8 @@
 
                         <ImageView
                             android:id="@+id/icon9"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal9"
@@ -515,9 +523,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels9"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -530,7 +537,8 @@
 
                         <ImageView
                             android:id="@+id/icon10"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal10"
@@ -542,9 +550,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels10"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -557,7 +564,8 @@
 
                         <ImageView
                             android:id="@+id/icon11"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal11"
@@ -569,9 +577,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels11"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -584,7 +591,8 @@
 
                         <ImageView
                             android:id="@+id/icon12"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal12"
@@ -596,9 +604,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels12"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -611,7 +618,8 @@
 
                         <ImageView
                             android:id="@+id/icon13"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal13"
@@ -623,9 +631,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels13"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -638,7 +645,8 @@
 
                         <ImageView
                             android:id="@+id/icon14"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal14"
@@ -650,9 +658,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels14"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -665,7 +672,8 @@
 
                         <ImageView
                             android:id="@+id/icon15"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal15"
@@ -677,9 +685,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels15"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -692,7 +699,8 @@
 
                         <ImageView
                             android:id="@+id/icon16"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal16"
@@ -704,9 +712,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels16"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -719,7 +726,8 @@
 
                         <ImageView
                             android:id="@+id/icon17"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal17"
@@ -731,9 +739,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels17"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -746,7 +753,8 @@
 
                         <ImageView
                             android:id="@+id/icon18"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal18"
@@ -758,9 +766,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels18"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -773,7 +780,8 @@
 
                         <ImageView
                             android:id="@+id/icon19"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal19"
@@ -785,9 +793,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels19"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -800,7 +807,8 @@
 
                         <ImageView
                             android:id="@+id/icon20"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal20"
@@ -812,9 +820,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels20"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -827,7 +834,8 @@
 
                         <ImageView
                             android:id="@+id/icon21"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal21"
@@ -839,9 +847,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels21"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -854,7 +861,8 @@
 
                         <ImageView
                             android:id="@+id/icon22"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal22"
@@ -866,9 +874,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels22"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -881,7 +888,8 @@
 
                         <ImageView
                             android:id="@+id/icon23"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal23"
@@ -893,9 +901,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels23"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
 
                     <TableRow>
@@ -908,7 +915,8 @@
 
                         <ImageView
                             android:id="@+id/icon24"
-                            android:layout_width="20dp" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
 
                         <TextView
                             android:id="@+id/tempNormal24"
@@ -920,9 +928,8 @@
 
                         <TextView
                             android:id="@+id/tempFeels24"
-                            android:fontFamily="@font/gothic"
-                            android:text="-10°"
-                            android:textColor="@color/colorLightGray" />
+                            style="@style/GrayDetailText"
+                            android:text="-10°" />
                     </TableRow>
                 </TableLayout>
             </ScrollView>

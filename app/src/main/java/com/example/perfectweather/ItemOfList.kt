@@ -6,18 +6,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ItemOfList (
     val infoWeather: String,
-    val info1: String,
-    val temp1: String,
-    val icon1: String,
-    val info2: String,
-    val temp2: String,
-    val icon2: String,
-    val info3: String,
-    val temp3: String,
-    val icon3: String,
-    val info4: String,
-    val temp4: String,
-    val icon4: String,
+    val infoPreview: Array<String>,
+    val tempPreview: Array<String>,
+    val iconPreview: Array<String>,
 
     val tempNow: String,
     val iconWeather: String,

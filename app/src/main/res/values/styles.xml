@@ -10,6 +10,12 @@
     <style name="DetailText">
         <item name="android:textColor">@color/colorLight</item>
         <item name="fontFamily">@font/gothic</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+    <style name="GrayDetailText">
+        <item name="android:textColor">@color/colorLightGray</item>
+        <item name="fontFamily">@font/gothic</item>
+        <item name="android:layout_gravity">center</item>
     </style>
 
     <style name="DetailButton">
