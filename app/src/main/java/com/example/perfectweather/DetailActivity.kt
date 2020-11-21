@@ -45,7 +45,6 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val sdfSun = SimpleDateFormat("kk:mm")
-        val sdfCheck = SimpleDateFormat("dd.MM.yyyy")
         val sdfHour = SimpleDateFormat("kk")
 
         tempNowText.text = item!!.tempNow + '°'
@@ -67,9 +66,8 @@ class DetailActivity : AppCompatActivity() {
         val feelTexts = listOf(tempFeels2, tempFeels3, tempFeels4, tempFeels5, tempFeels6, tempFeels7, tempFeels8, tempFeels9, tempFeels10, tempFeels11, tempFeels12, tempFeels13, tempFeels14, tempFeels15, tempFeels16, tempFeels17, tempFeels18, tempFeels19, tempFeels20, tempFeels21, tempFeels22, tempFeels23, tempFeels24)
         val iconTexts = listOf(icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15, icon16, icon17, icon18, icon19, icon20, icon21, icon22, icon23, icon24)
 
-        Log.i("time", sdfCheck.format(item.hour.toLong()*1000).toString())
-        if (sdfCheck.format(item.hour.toLong()*1000).toString() != "01.01.1970") {
-            weekSelector.visibility = View.VISIBLE
+        if (item.hour != "") {
+            weekSelector.visibility = View.GONE
             hourlyInterface.visibility = View.VISIBLE
             tableToHide.visibility = View.VISIBLE
             var i = 0
@@ -90,7 +88,7 @@ class DetailActivity : AppCompatActivity() {
                 i++
             }
         }else{
-            weekSelector.visibility = View.GONE
+            weekSelector.visibility = View.VISIBLE
             hourlyInterface.visibility = View.GONE
             tableToHide.visibility = View.GONE
         }
