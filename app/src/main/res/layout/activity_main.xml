@@ -7,36 +7,24 @@
     tools:context=".MainActivity"
     android:background="@drawable/background_sky">
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/nav_Host_Fragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/gothic"
-            android:textAlignment="center"
-            android:text="Ваш город:" />
-
-        <TextView
-            android:id="@+id/cityText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/gothic"
-            android:textColor="@color/colorAccent"
-            android:textAlignment="center"
-            android:text="Москва"
-            android:textSize="30sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/_imageRecyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

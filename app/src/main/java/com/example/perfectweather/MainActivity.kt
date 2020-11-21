@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     arrayOf(body.daily[2].temp.day.toString(), body.daily[3].temp.day.toString(), body.daily[4].temp.day.toString(), body.daily[5].temp.day.toString()),
                     arrayOf(body.daily[2].weather[0].icon, body.daily[3].weather[0].icon, body.daily[4].weather[0].icon, body.daily[5].weather[0].icon),
                     body.daily[2].temp.day.toString(), body.daily[2].weather[0].icon, body.daily[2].weather[0].main, body.daily[2].temp.min.toString(), body.daily[2].temp.max.toString(), body.daily[2].feelsLike.day.toString(), body.daily[2].windSpeed.toString(), body.daily[2].sunrise.toString(), body.daily[2].sunset.toString(), "-",
-                    body.daily[2].pressure.toString(), "", "", "",
+                    body.daily[2].pressure.toString(), "", "", "0000000000",
                     listOf(""), listOf(""), listOf(""),
                     arrayOf(body.daily[2].dt.toString(), body.daily[2].temp.day.toString(), body.daily[2].weather[0].icon, body.daily[2].weather[0].main, body.daily[2].temp.min.toString(), body.daily[2].temp.max.toString(), body.daily[2].feelsLike.day.toString(), body.daily[2].windSpeed.toString(), body.daily[2].sunrise.toString(), body.daily[2].sunset.toString(),body.daily[2].pressure.toString()),
                     arrayOf(body.daily[3].dt.toString(), body.daily[3].temp.day.toString(), body.daily[3].weather[0].icon, body.daily[3].weather[0].main, body.daily[3].temp.min.toString(), body.daily[3].temp.max.toString(), body.daily[3].feelsLike.day.toString(), body.daily[3].windSpeed.toString(), body.daily[3].sunrise.toString(), body.daily[3].sunset.toString(),body.daily[3].pressure.toString()),

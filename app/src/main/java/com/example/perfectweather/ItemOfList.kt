@@ -12,7 +12,7 @@ data class ItemOfList (
 
     val tempNow: String,
     val iconWeather: String,
-    val weatherType: String,
+    var weatherType: String,
     val tempMin: String,
     val tempMax: String,
     val tempFeelsLike: String,

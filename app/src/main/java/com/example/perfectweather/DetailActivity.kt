@@ -1,7 +1,9 @@
 package com.example.perfectweather
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -16,8 +18,7 @@ class DetailActivity : AppCompatActivity() {
 
         val item = intent.getParcelableExtra<ItemOfList>("OBJECT_INTENT")
 
-        val hints = listOf("Совет: в такую погоду одеться можно легче, чем обычно. Не забудьте посмотреть на ветер",
-            "Совет: совсем раздеваться не стоит, солнце хоть и выглядывает, но в тени все еще холодно",
+        val hints = listOf("Совет: в такую погоду одеться можно легче, но совсем раздеваться не стоит, в тени все еще холодно. Не забудьте посмотреть на ветер",
             "Совет: стоит запастить чем-то ярким и теплым, что поднимет вам настроение в этот серый день. На всякий случай можно взять зонт",
             "Совет: обязательно возьмите зонт и что-нибудь непромокаемое, дождь - вещь длительная",
             "Совет: в такую погоду лучше оставаться дома и наслаждаться теплыми напитками, но если собрались на прогулку, возьмите дождевик и не стойте под высокими объектами",
@@ -25,16 +26,26 @@ class DetailActivity : AppCompatActivity() {
             "Совет: туман может быть противен своим холодом и видимостью, советуем накинуть куртку или плащ")
 
         when {
-            item!!.weatherType == getString(R.string.weatherClear) -> {weatherGif.setBackgroundResource(R.drawable.sunny); hintText.text = hints[0]}
-            item.weatherType == getString(R.string.weatherClouds) -> {weatherGif.setBackgroundResource(R.drawable.clouds_part); hintText.text = hints[1]}
-            item.weatherType == getString(R.string.weatherBigClouds) -> {weatherGif.setBackgroundResource(R.drawable.clouds); hintText.text = hints[2]}
-            item.weatherType == getString(R.string.weatherRain) -> {weatherGif.setBackgroundResource(R.drawable.rain); hintText.text = hints[3]}
-            item.weatherType == getString(R.string.weatherThunder) -> {weatherGif.setBackgroundResource(R.drawable.thunder); hintText.text = hints[4]}
-            item.weatherType == getString(R.string.weatherSnow) -> {weatherGif.setBackgroundResource(R.drawable.snow); hintText.text = hints[5]}
-            item.weatherType == getString(R.string.weatherMist) -> {weatherGif.setBackgroundResource(R.drawable.mist); hintText.text = hints[6]}
+            item!!.weatherType == "Clear" -> item.weatherType = getString(R.string.weatherClear)
+            item.weatherType == "Clouds" -> item.weatherType = getString(R.string.weatherBigClouds)
+            item.weatherType == "Rain" || item.weatherType == "Drizzle"-> item.weatherType = getString(R.string.weatherBigClouds)
+            item.weatherType == "Thunderstorm" -> item.weatherType = getString(R.string.weatherBigClouds)
+            item.weatherType == "Snow" -> item.weatherType = getString(R.string.weatherBigClouds)
+            item.weatherType == "Mist" || item.weatherType == "Smoke" || item.weatherType == "Haze" ||
+                    item.weatherType == "Dust" || item.weatherType == "Fog" || item.weatherType == "Sand" ||
+                    item.weatherType == "Ash" || item.weatherType == "Squall" || item.weatherType == "Tornado" -> item.weatherType = getString(R.string.weatherBigClouds)
+        }
+        when {
+            item!!.weatherType == getString(R.string.weatherClear) -> {weatherGif.setImageResource(R.drawable.sunny); hintText.text = hints[0]}
+            item.weatherType == getString(R.string.weatherBigClouds) -> {weatherGif.setImageResource(R.drawable.clouds); hintText.text = hints[1]}
+            item.weatherType == getString(R.string.weatherRain) -> {weatherGif.setImageResource(R.drawable.rain); hintText.text = hints[2]}
+            item.weatherType == getString(R.string.weatherThunder) -> {weatherGif.setImageResource(R.drawable.thunder); hintText.text = hints[3]}
+            item.weatherType == getString(R.string.weatherSnow) -> {weatherGif.setImageResource(R.drawable.snow); hintText.text = hints[4]}
+            item.weatherType == getString(R.string.weatherMist) -> {weatherGif.setImageResource(R.drawable.mist); hintText.text = hints[5]}
         }
 
         val sdfSun = SimpleDateFormat("kk:mm")
+        val sdfCheck = SimpleDateFormat("dd.MM.yyyy")
         val sdfHour = SimpleDateFormat("kk")
 
         tempNowText.text = item!!.tempNow + '°'
@@ -56,19 +67,32 @@ class DetailActivity : AppCompatActivity() {
         val feelTexts = listOf(tempFeels2, tempFeels3, tempFeels4, tempFeels5, tempFeels6, tempFeels7, tempFeels8, tempFeels9, tempFeels10, tempFeels11, tempFeels12, tempFeels13, tempFeels14, tempFeels15, tempFeels16, tempFeels17, tempFeels18, tempFeels19, tempFeels20, tempFeels21, tempFeels22, tempFeels23, tempFeels24)
         val iconTexts = listOf(icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10, icon11, icon12, icon13, icon14, icon15, icon16, icon17, icon18, icon19, icon20, icon21, icon22, icon23, icon24)
 
-        var i = 0
-        var hour = sdfHour.format(item.hour.toLong()*1000).toInt()
-        hour1.text = "${hour}:00"
-        tempNormal1.text = item.hourTempList[0] + '°'
-        tempFeels1.text = item.hourFeelList[0] + '°'
-        Picasso.get().load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png").fit().into(icon1)
-        while (i<23){
-            if (hour == 24) hour = 1 else hour += 1
-            hoursTexts[i].text = "${hour}:00"
-            tempTexts[i].text = item.hourTempList[i] + '°'
-            feelTexts[i].text = item.hourFeelList[i] + '°'
-            Picasso.get().load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png").resize(25,25).centerCrop().into(iconTexts[i])
-            i++
+        Log.i("time", sdfCheck.format(item.hour.toLong()*1000).toString())
+        if (sdfCheck.format(item.hour.toLong()*1000).toString() != "01.01.1970") {
+            weekSelector.visibility = View.VISIBLE
+            hourlyInterface.visibility = View.VISIBLE
+            tableToHide.visibility = View.VISIBLE
+            var i = 0
+            var hour = sdfHour.format(item.hour.toLong() * 1000).toInt()
+            hour1.text = "${hour}:00"
+            tempNormal1.text = item.hourTempList[0] + '°'
+            tempFeels1.text = item.hourFeelList[0] + '°'
+            Picasso.get().load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png")
+                .fit().into(icon1)
+            while (i < 23) {
+                if (hour == 24) hour = 1 else hour += 1
+                hoursTexts[i].text = "${hour}:00"
+                tempTexts[i].text = item.hourTempList[i] + '°'
+                feelTexts[i].text = item.hourFeelList[i] + '°'
+                Picasso.get()
+                    .load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png")
+                    .resize(25, 25).centerCrop().into(iconTexts[i])
+                i++
+            }
+        }else{
+            weekSelector.visibility = View.GONE
+            hourlyInterface.visibility = View.GONE
+            tableToHide.visibility = View.GONE
         }
     }
 }
