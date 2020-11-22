@@ -1,18 +1,18 @@
 package com.example.perfectweather
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.StrictMode
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.perfectweather.`interface`.API_URL
 import com.example.perfectweather.`interface`.WeatherInterface
 import com.example.perfectweather.model.OpenWeatherModel
-import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_main.view.*
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -22,9 +22,6 @@ import java.text.SimpleDateFormat
 
 class MainFragment : Fragment() {
     var cityToChange : String? = ""
-    var lat = 55.7605.toString()
-    var lon = 37.6296.toString()
-    var cityName = "Москва"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +29,11 @@ class MainFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_main, container, false)
+        val preferences = this.requireActivity().getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
 
-        cityToChange = arguments?.getString("city")
-        if (cityToChange != null){
-            lat = arguments?.getString("lat").toString()
-            lon = arguments?.getString("lon").toString()
-            cityName = cityToChange.toString()
-        }
+        var lat = preferences.getString("latMain", 55.7605.toString()).toString()
+        var lon = preferences.getString("lonMain", 37.6296.toString()).toString()
+        var cityName = preferences?.getString("cityMain", "Москва")
         view?.cityText?.text = cityName
         JSonGetter(view, lat, lon)
 

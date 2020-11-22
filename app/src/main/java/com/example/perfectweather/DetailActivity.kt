@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.perfectweather.enums.DayInfo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
 import java.text.DateFormat
@@ -18,39 +19,13 @@ class DetailActivity : AppCompatActivity() {
 
         val item = intent.getParcelableExtra<ItemOfList>("OBJECT_INTENT")
 
-        val hints = listOf("Совет: в такую погоду одеться можно легче, но совсем раздеваться не стоит, в тени все еще холодно. Не забудьте посмотреть на ветер",
-            "Совет: стоит запастить чем-то ярким и теплым, что поднимет вам настроение в этот серый день. На всякий случай можно взять зонт",
-            "Совет: обязательно возьмите зонт и что-нибудь непромокаемое, дождь - вещь длительная",
-            "Совет: в такую погоду лучше оставаться дома и наслаждаться теплыми напитками, но если собрались на прогулку, возьмите дождевик и не стойте под высокими объектами",
-            "Совет: одеваться стоит потеплее: свитер и теплые носки не помешают. Обязательно возьмите шапку!",
-            "Совет: туман может быть противен своим холодом и видимостью, советуем накинуть куртку или плащ")
-
-        when {
-            item!!.weatherType == "Clear" -> item.weatherType = getString(R.string.weatherClear)
-            item.weatherType == "Clouds" -> item.weatherType = getString(R.string.weatherBigClouds)
-            item.weatherType == "Rain" || item.weatherType == "Drizzle"-> item.weatherType = getString(R.string.weatherBigClouds)
-            item.weatherType == "Thunderstorm" -> item.weatherType = getString(R.string.weatherBigClouds)
-            item.weatherType == "Snow" -> item.weatherType = getString(R.string.weatherBigClouds)
-            item.weatherType == "Mist" || item.weatherType == "Smoke" || item.weatherType == "Haze" ||
-                    item.weatherType == "Dust" || item.weatherType == "Fog" || item.weatherType == "Sand" ||
-                    item.weatherType == "Ash" || item.weatherType == "Squall" || item.weatherType == "Tornado" -> item.weatherType = getString(R.string.weatherBigClouds)
-        }
-        when {
-            item!!.weatherType == getString(R.string.weatherClear) -> {weatherGif.setImageResource(R.drawable.sunny); hintText.text = hints[0]}
-            item.weatherType == getString(R.string.weatherBigClouds) -> {weatherGif.setImageResource(R.drawable.clouds); hintText.text = hints[1]}
-            item.weatherType == getString(R.string.weatherRain) -> {weatherGif.setImageResource(R.drawable.rain); hintText.text = hints[2]}
-            item.weatherType == getString(R.string.weatherThunder) -> {weatherGif.setImageResource(R.drawable.thunder); hintText.text = hints[3]}
-            item.weatherType == getString(R.string.weatherSnow) -> {weatherGif.setImageResource(R.drawable.snow); hintText.text = hints[4]}
-            item.weatherType == getString(R.string.weatherMist) -> {weatherGif.setImageResource(R.drawable.mist); hintText.text = hints[5]}
-        }
-
         val sdfSun = SimpleDateFormat("kk:mm")
         val sdfHour = SimpleDateFormat("kk")
 
         tempNowText.text = item!!.tempNow + '°'
         Picasso.get().load("http://openweathermap.org/img/wn/${item.iconWeather}@2x.png").fit().into(iconWeatherType)
-        weatherTypeText.text = item.weatherType
-        tempMinMaxText.text = "${item.tempMin} °/${item.tempMax}°"
+        weatherTypeText.text = translateWeather(item.weatherType)
+        tempMinMaxText.text = "${item.tempMin}° /${item.tempMax}°"
         tempFeelsLikeText.text = item.tempFeelsLike + '°'
         windText.text = item.wind
         sunriseTime.text = sdfSun.format(item.sunrise.toLong()*1000)
@@ -70,6 +45,7 @@ class DetailActivity : AppCompatActivity() {
             weekSelector.visibility = View.GONE
             hourlyInterface.visibility = View.VISIBLE
             tableToHide.visibility = View.VISIBLE
+            tableToHide2.visibility = View.VISIBLE
             var i = 0
             var hour = sdfHour.format(item.hour.toLong() * 1000).toInt()
             hour1.text = "${hour}:00"
@@ -83,7 +59,7 @@ class DetailActivity : AppCompatActivity() {
                 tempTexts[i].text = item.hourTempList[i] + '°'
                 feelTexts[i].text = item.hourFeelList[i] + '°'
                 Picasso.get()
-                    .load("http://openweathermap.org/img/wn/${item.hourIconList[0]}@2x.png")
+                    .load("http://openweathermap.org/img/wn/${item.hourIconList[i]}@2x.png")
                     .resize(25, 25).centerCrop().into(iconTexts[i])
                 i++
             }
@@ -91,6 +67,70 @@ class DetailActivity : AppCompatActivity() {
             weekSelector.visibility = View.VISIBLE
             hourlyInterface.visibility = View.GONE
             tableToHide.visibility = View.GONE
+            tableToHide2.visibility = View.GONE
+            val sdfWeek = SimpleDateFormat("EEEE")
+            firstDayButton.text = sdfWeek.format(item.day2WeatherList[DayInfo.DAYOFWEEKDAY.ordinal].toLong() * 1000).toString().toUpperCase()
+            secondDayButton.text = sdfWeek.format(item.day3WeatherList[DayInfo.DAYOFWEEKDAY.ordinal].toLong() * 1000).toString().toUpperCase()
+            thirdDayButton.text = sdfWeek.format(item.day4WeatherList[DayInfo.DAYOFWEEKDAY.ordinal].toLong() * 1000).toString().toUpperCase()
+            fourthDayButton.text = sdfWeek.format(item.day5WeatherList[DayInfo.DAYOFWEEKDAY.ordinal].toLong() * 1000).toString().toUpperCase()
+            fifthDayButton.text = sdfWeek.format(item.day6WeatherList[DayInfo.DAYOFWEEKDAY.ordinal].toLong() * 1000).toString().toUpperCase()
         }
+
+        firstDayButton.setOnClickListener {
+            setDayWeather(item.day2WeatherList)
+        }
+        secondDayButton.setOnClickListener {
+            setDayWeather(item.day3WeatherList)
+        }
+        thirdDayButton.setOnClickListener {
+            setDayWeather(item.day4WeatherList)
+        }
+        fourthDayButton.setOnClickListener {
+            setDayWeather(item.day5WeatherList)
+        }
+        fifthDayButton.setOnClickListener {
+            setDayWeather(item.day6WeatherList)
+        }
+    }
+    
+    private fun setDayWeather(dayArray: Array<String>){
+        val sdfSun = SimpleDateFormat("kk:mm")
+        tempNowText.text = dayArray[DayInfo.DAYTEMPDAY.ordinal] + '°'
+        Picasso.get().load("http://openweathermap.org/img/wn/${dayArray[DayInfo.ICONDAY.ordinal]}@2x.png").fit().into(iconWeatherType)
+        weatherTypeText.text = translateWeather(dayArray[DayInfo.TYPEDAY.ordinal])
+        tempMinMaxText.text = "${dayArray[DayInfo.MINTEMPDAY.ordinal]}° /${dayArray[DayInfo.MAXTEMPDAY.ordinal]}°"
+        tempFeelsLikeText.text = dayArray[DayInfo.FEELSLIKEDAY.ordinal] + '°'
+        windText.text = dayArray[DayInfo.WINDDAY.ordinal]
+        sunriseTime.text = sdfSun.format(dayArray[DayInfo.SUNRISEDAY.ordinal].toLong()*1000)
+        sunsetTime.text = sdfSun.format(dayArray[DayInfo.SUNSETDAY.ordinal].toLong()*1000)
+        pressureMeter.text = dayArray[DayInfo.PRESSUREDAY.ordinal]
+    }
+    
+    private fun translateWeather(engWeather: String): String{
+        var toTranslate = engWeather
+
+        val hints = listOf("Совет: в такую погоду одеться можно легче, но совсем раздеваться не стоит, в тени все еще холодно. Не забудьте посмотреть на ветер",
+            "Совет: стоит запастить чем-то ярким и теплым, что поднимет вам настроение в этот серый день. На всякий случай можно взять зонт",
+            "Совет: обязательно возьмите зонт и что-нибудь непромокаемое, дождь - вещь длительная",
+            "Совет: в такую погоду лучше оставаться дома и наслаждаться теплыми напитками, но если собрались на прогулку, возьмите дождевик и не стойте под высокими объектами",
+            "Совет: одеваться стоит потеплее: свитер и теплые носки не помешают. Обязательно возьмите шапку!",
+            "Совет: туман может быть противен своим холодом и видимостью, советуем накинуть куртку или плащ")
+        when (toTranslate) {
+            "Clear" -> toTranslate = getString(R.string.weatherClear)
+            "Clouds" -> toTranslate = getString(R.string.weatherBigClouds)
+            "Rain", "Drizzle" -> toTranslate = getString(R.string.weatherRain)
+            "Thunderstorm" -> toTranslate = getString(R.string.weatherThunder)
+            "Snow" -> toTranslate = getString(R.string.weatherSnow)
+            "Mist", "Smoke", "Haze", "Dust", "Fog", "Sand", "Ash", "Squall", "Tornado" -> toTranslate = getString(R.string.weatherMist)
+        }
+        when (toTranslate) {
+            getString(R.string.weatherClear) -> {weatherGif.setImageResource(R.drawable.sunny); hintText.text = hints[0]}
+            getString(R.string.weatherBigClouds) -> {weatherGif.setImageResource(R.drawable.clouds); hintText.text = hints[1]}
+            getString(R.string.weatherRain) -> {weatherGif.setImageResource(R.drawable.rain); hintText.text = hints[2]}
+            getString(R.string.weatherThunder) -> {weatherGif.setImageResource(R.drawable.thunder); hintText.text = hints[3]}
+            getString(R.string.weatherSnow) -> {weatherGif.setImageResource(R.drawable.snow); hintText.text = hints[4]}
+            getString(R.string.weatherMist) -> {weatherGif.setImageResource(R.drawable.mist); hintText.text = hints[5]}
+        }
+        return toTranslate
     }
 }

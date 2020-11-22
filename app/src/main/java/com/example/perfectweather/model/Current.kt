@@ -10,16 +10,16 @@ data class Current(
     val dt: Int,
     @SerializedName("feels_like")
     val feelsLike: Double,
-    val humidity: Int,
-    val pressure: Int,
+    val humidity: Double,
+    val pressure: Double,
     val sunrise: Int,
     val sunset: Int,
     val temp: Double,
     val uvi: Double,
-    val visibility: Int,
+    val visibility: Double,
     val weather: List<Weather>,
     @SerializedName("wind_deg")
-    val windDeg: Int,
+    val windDeg: Double,
     @SerializedName("wind_speed")
-    val windSpeed: Int
+    val windSpeed: Double
 )
