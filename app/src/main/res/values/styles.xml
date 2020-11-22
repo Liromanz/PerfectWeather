@@ -25,4 +25,20 @@
         <item name="android:textColor">@color/colorLight</item>
         <item name="fontFamily">@font/gothic</item>
     </style>
+
+    <style name="BigAccentText">
+        <item name="fontFamily">@font/gothic</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="CoordinateText">
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="fontFamily">@font/gothic</item>
+        <item name="android:textColor">@color/colorTintGray</item>
+        <item name="android:textSize">50sp</item>
+    </style>
 </resources>

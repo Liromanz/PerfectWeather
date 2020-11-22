@@ -12,5 +12,9 @@
         android:id="@+id/locationFragment2"
         android:name="com.example.perfectweather.LocationFragment"
         android:label="fragment_location"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_location" >
+        <action
+            android:id="@+id/action_locationFragment2_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

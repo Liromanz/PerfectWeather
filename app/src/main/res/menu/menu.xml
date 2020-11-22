@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/blankFragment"
+        android:id="@+id/mainFragment"
         android:icon="@drawable/ic_baseline_cloud_queue_24"
         android:title="@string/weather"
         />
     <item
-        android:id="@+id/blankFragment2"
+        android:id="@+id/locationFragment2"
         android:icon="@drawable/ic_baseline_location_on_24"
         android:title="@string/cities"
         />

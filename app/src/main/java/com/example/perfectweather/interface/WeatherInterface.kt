@@ -1,5 +1,6 @@
-package com.example.perfectweather
+package com.example.perfectweather.`interface`
 
+import com.example.perfectweather.BuildConfig
 import com.example.perfectweather.model.OpenWeatherModel
 import retrofit2.Call
 import retrofit2.http.GET

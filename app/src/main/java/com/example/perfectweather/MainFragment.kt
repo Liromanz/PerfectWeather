@@ -9,33 +9,54 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.perfectweather.`interface`.API_URL
+import com.example.perfectweather.`interface`.WeatherInterface
 import com.example.perfectweather.model.OpenWeatherModel
+import kotlinx.android.synthetic.main.fragment_main.*
+import kotlinx.android.synthetic.main.fragment_main.view.*
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
 
+
 class MainFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    var cityToChange : String? = ""
+    var lat = 55.7605.toString()
+    var lon = 37.6296.toString()
+    var cityName = "Москва"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_main, container, false)
 
-        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitAll().build())
+        cityToChange = arguments?.getString("city")
+        if (cityToChange != null){
+            lat = arguments?.getString("lat").toString()
+            lon = arguments?.getString("lon").toString()
+            cityName = cityToChange.toString()
+        }
+        view?.cityText?.text = cityName
+        JSonGetter(view, lat, lon)
 
+        return view
+    }
+
+    fun JSonGetter(view: View, latitude : String, longtude : String){
+
+        StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder().permitAll().build())
         val builder = Retrofit.Builder()
             .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
         val retrofit = builder.build()
         val weatherInterface: WeatherInterface =
-            retrofit.create<WeatherInterface>(WeatherInterface::class.java)
+            retrofit.create<WeatherInterface>(
+                WeatherInterface::class.java)
         val call: Call<OpenWeatherModel> =
-            weatherInterface.getOneCallWeather(55.7605, 37.6296, "ru")
+            weatherInterface.getOneCallWeather(latitude.toDouble(), longtude.toDouble())
         val response = call.execute()
         var imageList : List<ItemOfList> = listOf(ItemOfList())
         if (response.isSuccessful) {
@@ -105,12 +126,10 @@ class MainFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id._imageRecyclerView)
         recyclerView!!.layoutManager = LinearLayoutManager(view.context)
         recyclerView.setHasFixedSize(true)
-        recyclerView.adapter = ItemAdapter(requireContext(), imageList) {//requireActivity.ApplicationContext, если и это, то
+        recyclerView.adapter = ItemAdapter(requireContext(), imageList) {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("OBJECT_INTENT", it)
             startActivity(intent)
         }
-
-        return view
     }
 }

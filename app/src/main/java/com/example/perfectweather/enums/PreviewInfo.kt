@@ -1,4 +1,4 @@
-package com.example.perfectweather
+package com.example.perfectweather.enums
 
 enum class PreviewInfo {
     FIRSTSECTION,
