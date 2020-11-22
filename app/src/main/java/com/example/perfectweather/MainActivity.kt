@@ -8,6 +8,7 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.perfectweather.`interface`.Communicator
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -50,5 +51,6 @@ class MainActivity : AppCompatActivity(), Communicator {
         editor.apply()
 
         Navigation.findNavController(this, R.id.nav_Host_Fragment).navigate(R.id.action_locationFragment2_to_mainFragment)
+        Animatoo.animateFade(this)
     }
 }

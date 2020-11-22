@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.perfectweather.`interface`.API_URL
 import com.example.perfectweather.`interface`.WeatherInterface
 import com.example.perfectweather.model.OpenWeatherModel
@@ -125,6 +126,7 @@ class MainFragment : Fragment() {
             val intent = Intent(context, DetailActivity::class.java)
             intent.putExtra("OBJECT_INTENT", it)
             startActivity(intent)
+            Animatoo.animateZoom(context)
         }
     }
 }

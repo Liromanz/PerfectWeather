@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.example.perfectweather.`interface`.Communicator
 import kotlinx.android.synthetic.main.fragment_location.*
 import kotlinx.android.synthetic.main.fragment_location.view.*
@@ -61,7 +62,7 @@ class LocationFragment : Fragment() {
                     longitudes[index]?.text = address.longitude.toString()
                     texts[index]?.visibility = View.VISIBLE
                 }catch (e : IOException){
-                    //android.widget.Toast.makeText(view.context, "Такого города нет", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.context, "Такого города нет", Toast.LENGTH_SHORT).show()
                 }
             }
         }

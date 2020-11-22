@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.perfectweather.enums.DayInfo
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail.*
@@ -91,6 +92,11 @@ class DetailActivity : AppCompatActivity() {
         fifthDayButton.setOnClickListener {
             setDayWeather(item.day6WeatherList)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Animatoo.animateZoom(this)
     }
     
     private fun setDayWeather(dayArray: Array<String>){
